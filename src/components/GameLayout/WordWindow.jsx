@@ -10,22 +10,46 @@ function WordWindow(props) {
       "dumitru",
       "vasile",
    ];
+   const [WORD, setWORD] = useState("");
+   const [errorNr, setErrorNr] = useState(-1);
+   const [myWord, setMyWord] = useState(wordsDB[Math.floor(Math.random()*(wordsDB.length))]);
+   const [gameOver, setGameOver] = useState(false);
+   const [loading, setLoading] = useState(true);
+   const [wordDB, setWordDB] = useState([]);
+
+   useEffect(() => {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/words/all`)
+         .then((response) => response.json())
+         .catch((err) => err.message)
+         .then((data) => {
+            console.log(data.wordList);
+            setWordDB(()=>{
+               let DB = data.wordList;
+               let wordDB = DB.map(word => word.word);
+               return wordDB;
+            })
+
+            setLoading(false);
+            
+         });
+   }, []);
+
+
    let finalWord = "";
    let firstLetter = "";
+   let lastLetter = "";
    let wordArr = [];
    let correctLetter = false;
 
-   const [WORD, setWORD] = useState("");
-   const [errorNr, setErrorNr] = useState(-1);
-   const [myWord, setMyWord] = useState(wordsDB[(Math.random() * (wordsDB.length - 1)).toFixed(0)]);
-   const [gameOver, setGameOver] = useState(false);
 
    for (let index = 0; index < myWord.length; index++) {
+     
       if (index === 0) {
          finalWord = myWord[0].toUpperCase();
          firstLetter = myWord[0].toUpperCase();
+         lastLetter = myWord[myWord.length - 1].toUpperCase();
       } else {
-         if (myWord[index].toUpperCase() === firstLetter.toUpperCase()) {
+         if (myWord[index].toUpperCase() === firstLetter.toUpperCase() || myWord[index].toUpperCase() === lastLetter.toUpperCase()) {
             finalWord += myWord[index].toUpperCase();
          } else {
             finalWord += "_";
@@ -79,9 +103,7 @@ function WordWindow(props) {
             setGameOver(true);
             props.lost();
             setErrorNr(0);
-            setMyWord(
-               wordsDB[(Math.random() * (wordsDB.length - 1)).toFixed(0)]
-            );
+            setMyWord(wordDB[Math.floor(Math.random()*(wordDB.length))]);
             reword();
          }
       }
@@ -90,13 +112,13 @@ function WordWindow(props) {
          setWORD("YOU WIN");
          setGameOver(true);
          props.win();
-         setMyWord(wordsDB[(Math.random() * (wordsDB.length - 1)).toFixed(0)]);
+         setMyWord(wordDB[Math.floor(Math.random()*(wordDB.length))]);
          reword();
       }
      
    }, [props.newWord]);
 
-   return <div className={mod.WordWindow}>{WORD}</div>;
+   return  <div  className={mod.WordWindow}>{!loading && <div>{WORD}</div>}</div>  ;
 }
 
 export default WordWindow;
