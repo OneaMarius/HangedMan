@@ -22,7 +22,7 @@ function WordWindow(props) {
          .then((response) => response.json())
          .catch((err) => err.message)
          .then((data) => {
-            console.log(data.wordList);
+            // console.log(data.wordList);
             setWordDB(()=>{
                let DB = data.wordList;
                let wordDB = DB.map(word => word.word);

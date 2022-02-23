@@ -17,6 +17,7 @@ export const AuthContextProvider = (props) => {
    const login = useCallback((user) => {
       setIsLoggedIn(true);
       setLoggedUser(user);
+      console.log(user);
    }, []);
 
    const updateUser = (user) => {
