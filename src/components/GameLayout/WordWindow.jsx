@@ -30,7 +30,7 @@ function WordWindow(props) {
             })
 
             setLoading(false);
-            
+           
          });
    }, []);
 

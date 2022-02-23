@@ -3,22 +3,15 @@ import React from "react";
 
 const AuthContext = createContext({
    isLoggedIn: false,
-   activePage: 'home',
+   user: '',
    updateUser: () => {},
    login: () => {},
    logout: () => {},
-   pageHandler: ()=> {}
 });
 
 export const AuthContextProvider = (props) => {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
    const [loggedUser, setLoggedUser] = useState('No user is logged in');
-   const [activePage, setActivePage] = useState('home');
-
-
-  const pageHandler = useCallback((page) => {
-    setActivePage(page);
- }, []);
 
 
    const login = useCallback((user) => {
@@ -40,12 +33,10 @@ export const AuthContextProvider = (props) => {
    
    const contextValue = {
        isLoggedIn: isLoggedIn,
-       activePage: activePage,
        user: loggedUser,
        updateUser,
        login: login,
        logout: logout,
-       pageHandler: pageHandler
    }
 
    return <AuthContext.Provider value={contextValue}>{props.children}</AuthContext.Provider>;
