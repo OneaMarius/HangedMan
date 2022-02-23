@@ -14,6 +14,25 @@ function GamePage() {
     const [score, setScore] = useState(user.score);
     const [winGame, setWinGame] = useState(false);
     const [errors, setErrors] = useState(0);
+    const [wordDB, setWordDB] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/words/all`)
+         .then((response) => response.json())
+         .catch((err) => err.message)
+         .then((data) => {
+            // console.log(data.wordList);
+            setWordDB(()=>{
+               let DB = data.wordList;
+               let wordDB = DB.map(word => word.word);
+               return wordDB;
+            })
+
+            setLoading(false);
+           
+         });
+   }, []);
 
   async  function UpdatePlayerScore (lastScore) {
         let responseData;
@@ -52,16 +71,19 @@ function GamePage() {
     setWinGame(true);
     UpdatePlayerScore(+score + (5-errors)*100);
    }
+
    function lost() {
-     if (score < 100) {
-       setScore(0)
-       UpdatePlayerScore(0);
-     } else {
-       setScore(prev => prev - 100);
-       UpdatePlayerScore(+score - 100);
-     }
     setWinGame(true);
-    
+   }
+
+   function gameStart() {
+      if (score < 100) {
+         setScore(0)
+         UpdatePlayerScore(0);
+       } else {
+         setScore(prev => prev - 100);
+         UpdatePlayerScore(+score - 100);
+       }
    }
   
    function TryNewWord() {
@@ -78,7 +100,7 @@ function GamePage() {
     <Card>
        <TopInfoBar getScore={score}></TopInfoBar>
        <HangedMan errors={errors}></HangedMan>
-       <WordWindow newWord={word} win={win} lost={lost} newGame={winGame} addError={addError}></WordWindow>
+       {!loading && <WordWindow DB={wordDB} newWord={word} win={win} lost={lost}  gameStart={gameStart}  newGame={winGame} addError={addError}></WordWindow>} 
        <GameControllers keyPress={keyPress} gameWon={winGame} TryNewWord={TryNewWord}></GameControllers>
      </Card>
   )

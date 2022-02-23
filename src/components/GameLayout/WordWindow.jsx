@@ -2,45 +2,19 @@ import React, { useEffect, useState } from "react";
 import mod from "./Game.module.css";
 
 function WordWindow(props) {
-   const wordsDB = [
-      "marius",
-      "cosmin",
-      "adelina",
-      "george",
-      "dumitru",
-      "vasile",
-   ];
-   const [WORD, setWORD] = useState("");
+
+   const [WORD, setWORD] = useState("New Game");
    const [errorNr, setErrorNr] = useState(-1);
-   const [myWord, setMyWord] = useState(wordsDB[Math.floor(Math.random()*(wordsDB.length))]);
-   const [gameOver, setGameOver] = useState(false);
-   const [loading, setLoading] = useState(true);
-   const [wordDB, setWordDB] = useState([]);
-
-   useEffect(() => {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/words/all`)
-         .then((response) => response.json())
-         .catch((err) => err.message)
-         .then((data) => {
-            // console.log(data.wordList);
-            setWordDB(()=>{
-               let DB = data.wordList;
-               let wordDB = DB.map(word => word.word);
-               return wordDB;
-            })
-
-            setLoading(false);
-           
-         });
-   }, []);
-
+   const [myWord, setMyWord] = useState(props.DB[Math.floor(Math.random()*(props.DB.length))]);
+   const [gameOver, setGameOver] = useState(true);
+ 
 
    let finalWord = "";
    let firstLetter = "";
    let lastLetter = "";
    let wordArr = [];
    let correctLetter = false;
-
+   
 
    for (let index = 0; index < myWord.length; index++) {
      
@@ -98,12 +72,15 @@ function WordWindow(props) {
       if (!correctLetter && props.newWord !== " ") {
          setErrorNr((prev) => +prev + 1);
          props.addError(errorNr + 1);
+         if (errorNr === 0) {
+            props.gameStart();
+         }
          if (errorNr + 1 === 5) {
             setWORD("YOU LOST");
             setGameOver(true);
             props.lost();
             setErrorNr(0);
-            setMyWord(wordDB[Math.floor(Math.random()*(wordDB.length))]);
+            setMyWord(props.DB[Math.floor(Math.random()*(props.DB.length))]);
             reword();
          }
       }
@@ -112,13 +89,13 @@ function WordWindow(props) {
          setWORD("YOU WIN");
          setGameOver(true);
          props.win();
-         setMyWord(wordDB[Math.floor(Math.random()*(wordDB.length))]);
+         setMyWord(props.DB[Math.floor(Math.random()*(props.DB.length))]);
          reword();
       }
      
    }, [props.newWord]);
 
-   return  <div  className={mod.WordWindow}>{!loading && <div>{WORD}</div>}</div>  ;
+   return  <div  className={mod.WordWindow}><div>{WORD}</div></div>  ;
 }
 
 export default WordWindow;
