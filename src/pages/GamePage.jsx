@@ -5,6 +5,7 @@ import Card from '../components/Cards/Card';
 import WordWindow from '../components/GameLayout/WordWindow';
 import HangedMan from '../components/GameLayout/HangedMan';
 import AuthContext from '../context/auth-context';
+import mod from './GamePage.module.css';
 
 
 function GamePage() {
@@ -12,7 +13,9 @@ function GamePage() {
     const user = authCtx.user;
     const [word, setWord] = useState('');
     const [score, setScore] = useState(user.score);
-    const [winGame, setWinGame] = useState(false);
+    const [winGame, setWinGame] = useState(user.win);
+    const [loseGame, setLoseGame] = useState(user.lose);
+    const [finishGame, setFinishGame] = useState(true);
     const [errors, setErrors] = useState(0);
     const [wordDB, setWordDB] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -34,7 +37,7 @@ function GamePage() {
          });
    }, []);
 
-  async  function UpdatePlayerScore (lastScore) {
+  async  function UpdatePlayerScore (lastScore, win, lose) {
         let responseData;
       try {
          const response = await fetch(
@@ -46,7 +49,9 @@ function GamePage() {
                },
                body: JSON.stringify({
                 userId:user._id,
-                userScore:lastScore
+                userScore:lastScore,
+                win:win,
+                lose:lose
                }),
             }
          );
@@ -67,27 +72,30 @@ function GamePage() {
       setWord(key);
     }
    function win() {
-    setScore(prev => +prev + (5-errors)*100);
-    setWinGame(true);
-    UpdatePlayerScore(+score + (5-errors)*100);
+    setScore(prev => +prev + (7-errors)*100);
+    setWinGame(prev => +prev + 1);
+    setLoseGame(prev => +prev - 1);
+    setFinishGame(true);
+    UpdatePlayerScore(+score + (5-errors)*100, +winGame + 1,+loseGame - 1);
    }
 
    function lost() {
-    setWinGame(true);
+      setFinishGame(true);
    }
 
    function gameStart() {
       if (score < 100) {
          setScore(0)
-         UpdatePlayerScore(0);
+         UpdatePlayerScore(0, winGame, +loseGame + 1);
        } else {
          setScore(prev => prev - 100);
-         UpdatePlayerScore(+score - 100);
+         UpdatePlayerScore(+score - 100, winGame, +loseGame + 1);
        }
+       setLoseGame(prev => +prev + 1);
    }
   
    function TryNewWord() {
-    setWinGame(false);
+      setFinishGame(false);
     setErrors(0);
    }
     
@@ -97,11 +105,12 @@ function GamePage() {
    }
 
   return (
-    <Card>
-       <TopInfoBar getScore={score}></TopInfoBar>
+    <Card className={mod.GameCard}>
+       {!loading && <div className={mod.loginDiv}><TopInfoBar getScore={score} getWins={winGame} getLosses={loseGame}></TopInfoBar>
        <HangedMan errors={errors}></HangedMan>
-       {!loading && <WordWindow DB={wordDB} newWord={word} win={win} lost={lost}  gameStart={gameStart}  newGame={winGame} addError={addError}></WordWindow>} 
-       <GameControllers keyPress={keyPress} gameWon={winGame} TryNewWord={TryNewWord}></GameControllers>
+       <WordWindow DB={wordDB} newWord={word} win={win} lost={lost}  gameStart={gameStart}  newGame={winGame} addError={addError}></WordWindow> 
+       <GameControllers keyPress={keyPress} gameWon={finishGame} TryNewWord={TryNewWord}></GameControllers></div>} 
+       
      </Card>
   )
 }

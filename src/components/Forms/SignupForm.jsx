@@ -18,7 +18,7 @@ function SignupForm() {
       const email = emailRef.current.value;
       const password = passwordRef.current.value;
       const name = nameRef.current.value;
-      console.log(name, email, password);
+      // console.log(name, email, password);
      const UserData = {
         email: email,
         password: password,

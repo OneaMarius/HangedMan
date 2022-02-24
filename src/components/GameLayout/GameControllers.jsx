@@ -26,7 +26,7 @@ function GameControllers(props) {
        {!gameWon && lettersArr.map((element) => {
 
             return (
-               <Button key={Math.random()} onClick={showLetter}>
+               <Button key={Math.random()} onClick={showLetter} className={mod.ctrlBtn}>
                   {element}
                </Button>
             );

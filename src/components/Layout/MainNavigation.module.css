@@ -1,13 +1,13 @@
 .header {
    height: 75px;
    width: 100%;
-   min-width: 350px;
-   background-color: rgb(5, 189, 51);
+   min-width: 500px;
+   background-color: rgb(136, 136, 136);
    color: white;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 2rem;
+   font-size: 1.5rem;
    margin: 0;
    user-select: none;
    overflow: hidden;
@@ -17,31 +17,7 @@
    font-weight: bold;
 }
 
-.logo {
-   margin: 0px 50px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
 
-.logoUser {
-   margin: 0px 50px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-.logo img{
-  width: 90px;
-  height: 80px;
-  
-}
-
-.logoUser img{
-   width: 100px;
-   height: 100px;
-   border-radius: 50%;
- }
 
 .nav {
    width: 100%;
@@ -59,7 +35,7 @@
 .nav .ul_logout {
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: space-evenly;
    margin: 0;
    padding: 0;
 }
@@ -74,7 +50,11 @@
 
 .nav li {
    list-style: none;
-   margin: 0px 50px;
+   margin: 0px 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
 }
 
 .nav a {
@@ -89,3 +69,10 @@
 }
 
 
+@media (max-width:450px) {
+   .header {
+      width: 100%;
+      font-size: 2rem;
+      
+   }
+}

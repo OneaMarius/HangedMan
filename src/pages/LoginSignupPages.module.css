@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 40%;
+    height: 60%;
 }
 
 .loginPage {
@@ -44,7 +46,7 @@
 }
 
 .switchBtn {
-    background-color: #cfcfcf;
+    background-color: #6d6d6d;
     font-weight: normal;
 }
 
@@ -61,23 +63,17 @@
     }
 
     .loginPage, .signupPage {
-        height: calc(100% - 150px);
-        width: 100%;
-        
-        position: fixed;
-        top: 150px; 
-    }
-}
-
-@media (max-height: 450px) {
-    .loginPage, .signupPage {
-        
         height: calc(100% - 75px);
         width: 100%;
         
         position: fixed;
         top: 75px; 
+        text-align: center;
     }
-
     
+    .FormCard {
+        width: 100%;
+        height: 100%;
+    }
 }
+

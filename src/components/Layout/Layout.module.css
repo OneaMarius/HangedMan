@@ -3,5 +3,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 350px;
+    width: 100vw;
+    background-color: rgb(37, 37, 37);
+    height: calc(100vh - 75px);
+    overflow: auto;
+}
+
+.Layout {
+    background-color: red;
 }

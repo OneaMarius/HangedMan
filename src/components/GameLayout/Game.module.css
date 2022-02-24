@@ -1,6 +1,6 @@
 .TopInfoBar {
+    width: 100%;
     height: 10%;
-    background-color: rgb(229, 255, 0);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 .WordWindow {
     height: 10%;
     background-color: black;
-    color: white;
+    color: #c7c7c7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,7 +18,7 @@
 }
 .GameControllers {
     height: 30%;
-    background-color: violet;
+    background-color: rgb(73, 73, 73);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -26,21 +26,55 @@
     overflow: auto;
 }
 
-.btn {
+/* .btn {
     background-color: rebeccapurple;
+} */
+
+.ctrlBtn {
+    width: 4rem;
+    height: 4rem;
+    padding: 0.25rem 1rem;
+    font-size: 2rem;
+    border-radius: 25px;
+    box-shadow: 0px 0px 5px black;
+    margin: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
-.score {
-    width: 100px;
-    height: 50px;
+.info {
+    width: 20%;
+    height: 100%;
     background-color: white;
     color: black;
     font-size: 2rem;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.infoName {
+   width: 100%;
+   height: 50%;
+   background-color: black;
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 1rem;
+}
+
+.infoValue {
+    width: 100%;
+    height: 50%;
+    display: flex;
     justify-content: center;
-    border: 2px solid black;
+    align-items: center;
+    font-size: 1.5rem;
 }
 
 .hangTower {
@@ -48,4 +82,40 @@
     width: 80%;
     background-color: burlywood;
     position: relative;
+}
+
+
+
+
+@media (max-height:900px) {
+    .ctrlBtn {
+        width: 2.75rem;
+        height: 2.65rem;
+        padding: 0.25rem 1rem;
+        font-size: 2rem;
+        margin: 0.3rem;
+        border-radius: 15px;
+    }
+}
+
+@media (max-height:800px) {
+    .ctrlBtn {
+        width: 2.60rem;
+        height: 2.25rem;
+        padding: 0.25rem 1rem;
+        font-size: 2rem;
+        border-radius: 15px;
+        margin: 0.15rem;
+    }
+}
+
+@media (max-height:700px) {
+    .ctrlBtn {
+        width: 2.75rem;
+        height: 2rem;
+        padding: 0.25rem 1rem;
+        font-size: 1.75rem;
+        border-radius: 15px;
+        margin: 0.15rem;
+    }
 }

@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 .form {
@@ -23,28 +24,7 @@
     margin: 0.25rem auto;
 }
 
-.radio {
-    
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-evenly;
-    /* margin: auto 2rem; */
-    
-}
 
-.radioEl {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-
-.element fieldset {
-    width: 100%;
-    border-radius: 12px;
-}
 
 .element input {
     width: 100%;
@@ -54,14 +34,7 @@
     text-align: center;
 }
 
-.element label, 
-.element legend {
-    font-weight: bold;
-}
 
-.radioEl label {
-    font-weight: normal;
-}
 
 .element button {
     margin-top: 1rem;
@@ -70,68 +43,36 @@
 @media (max-width:450px) {
     
     .form {
-        width: 80%;
-        height: 100%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-evenly;
-        flex-direction: column;
-    }
-
-    .element input {
-        width: 100%;
-        height: 3rem;
-        font-size: 2rem;
-        border-radius: 25px;
-        margin-top: 0.25rem ;
-        text-align: center;
-    }
-
-    .element label, 
-.element legend {
-    font-weight: bold;
-    font-size: 2rem;
-}
-
-.element button {
-    margin: 2rem;
-    font-size: 4rem;
-    border: 3px solid black;
-}
-
-
-
-}
-
-@media (max-height:450px) {
-    
-    .form {
-        width: 80%;
-        height: 100%;
+        width: 90%;
+        height: 90%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         flex-direction: column;
     }
+    
+    .element label {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 
     .element input {
         width: 100%;
-        height: 3rem;
-        font-size: 2rem;
-        border-radius: 25px;
+        height: 3ch;
+        border-radius: 7px;
         margin-top: 0.25rem ;
         text-align: center;
+        font-size: 2rem;
     }
 
-    .element label, 
-.element legend {
-    font-weight: bold;
-    font-size: 2rem;
+    .FormCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        
+    }
+
+
 }
-
-.element button {
-    margin: 2rem;
-    font-size: 4rem;
-    border: 3px solid black;
-}}
-
