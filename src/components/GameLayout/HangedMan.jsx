@@ -41,6 +41,7 @@ function HangedMan(props) {
    return (
       <div className={mod.HangedMan}>
          <div className={mod.HMerrors}>{props.errors}</div>
+         
          <div className={mod.hangBox}>
             <div className={mod.armA}></div>
             <div className={mod.armB}></div>
@@ -65,6 +66,7 @@ function HangedMan(props) {
                   </div>
             )}
          </div>
+         <div className={mod.lettersBar}>{props.usedLetters.map(item => <div className={mod.usedLetters}>{item}</div>)}</div>
       </div>
    );
 }

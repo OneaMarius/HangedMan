@@ -52,7 +52,7 @@ function WordWindow(props) {
 
    useEffect(() => {
       if (props.newWord === ' ') {
-         props.gameStart();
+         props.gameStart(myWord);
          setGamePaused(false);
       }
       if (WORD !== "" && !gameOver) {
@@ -78,7 +78,7 @@ function WordWindow(props) {
          setErrorNr((prev) => +prev + 1);
          props.addError(errorNr + 1);
          if (errorNr + 1 === 7) {
-            setWORD("YOU LOST");
+            setWORD(myWord.toUpperCase());
             setGameOver(true);
             props.lost();
             setErrorNr(0);
