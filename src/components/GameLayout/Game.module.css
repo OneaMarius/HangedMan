@@ -26,13 +26,13 @@
     overflow: auto;
 }
 
-/* .btn {
+.btn {
     background-color: rebeccapurple;
-} */
+}
 
 .ctrlBtn {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     padding: 0.25rem 1rem;
     font-size: 2rem;
     border-radius: 25px;

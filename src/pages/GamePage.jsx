@@ -6,6 +6,8 @@ import WordWindow from '../components/GameLayout/WordWindow';
 import HangedMan from '../components/GameLayout/HangedMan';
 import AuthContext from '../context/auth-context';
 import mod from './GamePage.module.css';
+import winSound from '../sounds/win.wav'
+import loseSound from '../sounds/lose2.wav'
 
 
 function GamePage() {
@@ -19,6 +21,8 @@ function GamePage() {
     const [errors, setErrors] = useState(0);
     const [wordDB, setWordDB] = useState([]);
     const [loading, setLoading] = useState(true);
+    let winSoundEffect = new Audio(winSound);
+    let loseSoundEffect = new Audio(loseSound);
 
     useEffect(() => {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/words/all`)
@@ -72,6 +76,7 @@ function GamePage() {
       setWord(key);
     }
    function win() {
+      winSoundEffect.play();
     setScore(prev => +prev + (7-errors)*100);
     setWinGame(prev => +prev + 1);
     setLoseGame(prev => +prev - 1);
@@ -80,6 +85,7 @@ function GamePage() {
    }
 
    function lost() {
+      loseSoundEffect.play();
       setFinishGame(true);
    }
 
