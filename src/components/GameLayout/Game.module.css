@@ -44,6 +44,15 @@
     user-select: none;
 }
 
+.GameControllers .ctrBtnRed {
+    background-color: red;
+    color: white;
+}
+.GameControllers .ctrBtnGreen {
+    background-color: rgb(53, 212, 5);
+    color: black;
+}
+
 .info {
     width: 20%;
     height: 100%;

@@ -66,7 +66,7 @@ function HangedMan(props) {
                   </div>
             )}
          </div>
-         <div className={mod.lettersBar}>{props.usedLetters.map(item => <div className={mod.usedLetters}>{item}</div>)}</div>
+         {/* <div className={mod.lettersBar}>{props.usedLetters.map(item => <div className={mod.usedLetters} key={Math.random()}>{item}</div>)}</div> */}
       </div>
    );
 }

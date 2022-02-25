@@ -33,7 +33,7 @@ function GameControllers(props) {
        {!gameWon && lettersArr.map((element) => {
 
             return (
-               <Button key={Math.random()} onClick={showLetter} className={mod.ctrlBtn}>
+               <Button key={Math.random()} onClick={showLetter} className={`${mod.ctrlBtn} ${props.usedLetters.find(letter => letter===element)? mod.ctrBtnRed : ''} ${props.correctLetters.find(letter => letter===element)? mod.ctrBtnGreen : ''}`}>
                   {element}
                </Button>
             );

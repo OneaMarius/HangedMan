@@ -23,7 +23,8 @@ function GamePage() {
     const [loading, setLoading] = useState(true);
     
     const [usedLetters, setUsedLetters] = useState([]);
-    const [wordArray, setWordArrays] = useState([]);
+    const [correctLetters, setCorrectLetters] = useState([]);
+    const [wordArray, setWordArray] = useState(['A']);
     let winSoundEffect = new Audio(winSound);
     let loseSoundEffect = new Audio(loseSound);
     let wordArr = [];
@@ -78,8 +79,10 @@ function GamePage() {
     function keyPress(key) {
     //   console.log('Play press: ', key);
       setWord(key);
-      if (key !== ' ' && !wordArray.find(letter => letter.toUpperCase() === key.toUpperCase())) {
+      if (key !== ' ' && !wordArray.find(letter => letter.toUpperCase() === key.toUpperCase()) && !usedLetters.find(letter => letter.toUpperCase() === key.toUpperCase())) {
          setUsedLetters(prev => [...prev, key.toUpperCase()])
+      } else if (key !== ' ' && wordArray.find(letter => letter.toUpperCase() === key.toUpperCase())) {
+         setCorrectLetters(prev => [...prev, key.toUpperCase()])
       }
       
       // console.log(usedLetters);
@@ -92,12 +95,14 @@ function GamePage() {
     setFinishGame(true);
     UpdatePlayerScore(+score + (7-errors)*100, +winGame + 1,+loseGame - 1);
     setUsedLetters([]);
+    setCorrectLetters([]);
    }
 
    function lost() {
       loseSoundEffect.play();
       setFinishGame(true);
       setUsedLetters([]);
+      setCorrectLetters([]);
    }
 
    function gameStart(myWord) {
@@ -112,7 +117,8 @@ function GamePage() {
        for (let i = 0; i < myWord.length; i++) {
          wordArr.push(myWord[i].toUpperCase());
        }
-       setWordArrays(wordArr);
+       setWordArray(wordArr);
+       setCorrectLetters([wordArr[0],wordArr[wordArr.length - 1]]);
    }
   
    function TryNewWord() {
@@ -130,8 +136,7 @@ function GamePage() {
        {!loading && <div className={mod.loginDiv}><TopInfoBar getScore={score} getWins={winGame} getLosses={loseGame}></TopInfoBar>
        <HangedMan errors={errors} usedLetters = {usedLetters}></HangedMan>
        <WordWindow DB={wordDB} newWord={word} win={win} lost={lost}  gameStart={gameStart}  newGame={winGame} addError={addError}></WordWindow> 
-       <GameControllers keyPress={keyPress} gameWon={finishGame} TryNewWord={TryNewWord}></GameControllers></div>} 
-       
+       <GameControllers keyPress={keyPress} gameWon={finishGame} TryNewWord={TryNewWord} usedLetters={usedLetters} correctLetters={correctLetters}></GameControllers></div>}      
      </Card>
   )
 }

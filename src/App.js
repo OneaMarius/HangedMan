@@ -26,10 +26,10 @@ const isLoggedIn = authCtx.isLoggedIn;
     )}
     {!isLoggedIn && (
        <Routes>
-          <Route path="/" element={<LoginPage />} exact />
+          <Route path="/" element={<Navigate to="/login"/>} exact />
           <Route path="/login" element={<LoginPage />} exact />
           <Route path="/signup" element={<SignupPage />} exact />
-          <Route path="*" element={<Navigate to="/"/>} />
+          <Route path="*" element={<Navigate to="/login"/>} />
        </Routes>
     )}
  </Layout>

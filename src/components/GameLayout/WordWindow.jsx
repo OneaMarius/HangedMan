@@ -10,6 +10,7 @@ function WordWindow(props) {
    );
    const [gameOver, setGameOver] = useState(true);
    const [gamePaused, setGamePaused] = useState(true);
+   const [usedLetters, setUsedLetters] = useState([]);
 
    let finalWord = "";
    let firstLetter = "";
@@ -54,7 +55,9 @@ function WordWindow(props) {
       if (props.newWord === ' ') {
          props.gameStart(myWord);
          setGamePaused(false);
+         setUsedLetters([]);
       }
+      
       if (WORD !== "" && !gameOver) {
          finalWord = WORD;
       }
@@ -74,7 +77,7 @@ function WordWindow(props) {
       wordArr.forEach((el) => (finalWord += el));
       setWORD(finalWord);
 
-      if (!correctLetter && props.newWord !== " ") {
+      if (!correctLetter && props.newWord !== " " && !usedLetters.find(letter => letter === props.newWord)) {
          setErrorNr((prev) => +prev + 1);
          props.addError(errorNr + 1);
          if (errorNr + 1 === 7) {
@@ -94,6 +97,7 @@ function WordWindow(props) {
          setMyWord(props.DB[Math.floor(Math.random() * props.DB.length)]);
          reword();
       }
+      setUsedLetters(prev => [...prev, props.newWord]);
    }, [props.newWord]);
 
    // function startNewGame() {
