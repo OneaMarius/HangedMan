@@ -90,7 +90,7 @@ function GamePage() {
     setWinGame(prev => +prev + 1);
     setLoseGame(prev => +prev - 1);
     setFinishGame(true);
-    UpdatePlayerScore(+score + (5-errors)*100, +winGame + 1,+loseGame - 1);
+    UpdatePlayerScore(+score + (7-errors)*100, +winGame + 1,+loseGame - 1);
     setUsedLetters([]);
    }
 
