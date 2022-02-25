@@ -58,7 +58,11 @@ function HangedMan(props) {
             {leg2 && <div className={`${mod.legL } ${props.errors === 7 && mod.hangRleg}`}></div>}
             {head && (
                <div
-                  className={`${mod.head } ${props.errors === 7 && mod.hangHead}`}></div>
+                  className={`${mod.head } ${props.errors === 7 && mod.hangHead}`}>
+                     <div className={mod.eye1}>{props.errors === 7 ? 'x':'o'}</div>
+                     <div className={mod.eye2}>{props.errors === 7 ? 'x':'o'}</div>
+                     <div className={mod.mouth}>{props.errors === 7 ? '(':')'}</div>
+                  </div>
             )}
          </div>
       </div>
