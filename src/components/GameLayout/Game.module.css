@@ -21,7 +21,7 @@
     background-color: rgb(73, 73, 73);
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-evenly;
     overflow: auto;
 }
@@ -31,7 +31,7 @@
 }
 
 .GameControllers .ctrlBtn {
-    width: 3rem;
+    width: 3.3rem;
     height: 3rem;
     padding: 0.25rem 1rem;
     font-size: 2rem;
@@ -42,6 +42,11 @@
     align-items: center;
     justify-content: center;
     user-select: none;
+}
+
+.GameControllers .ctrlBtn:hover {
+   background-color: rgb(65, 65, 65);
+   color: black;
 }
 
 .GameControllers .ctrBtnRed {
@@ -99,33 +104,33 @@
 
 @media (max-height:900px) {
     .GameControllers .ctrlBtn {
-        width: 2.75rem;
-        height: 2.65rem;
+        width: 3.35rem;
+        height: 3.25rem;
         padding: 0.25rem 1rem;
         font-size: 2rem;
-        margin: 0.3rem;
+        margin: 0.35rem;
         border-radius: 15px;
     }
 }
 
 @media (max-height:800px) {
     .GameControllers .ctrlBtn {
-        width: 2.60rem;
-        height: 2.25rem;
+        width: 3.5rem;
+        height: 3rem;
         padding: 0.25rem 1rem;
         font-size: 2rem;
         border-radius: 15px;
-        margin: 0.15rem;
+        margin: 0.25rem;
     }
 }
 
 @media (max-height:700px) {
     .GameControllers .ctrlBtn {
-        width: 2.75rem;
-        height: 2rem;
+        width: 3.5rem;
+        height: 3rem;
         padding: 0.25rem 1rem;
         font-size: 1.75rem;
         border-radius: 15px;
-        margin: 0.15rem;
+        margin: 0.25rem;
     }
 }
