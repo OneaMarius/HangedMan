@@ -30,12 +30,12 @@
     background-color: rebeccapurple;
 }
 
-.ctrlBtn {
+.GameControllers .ctrlBtn {
     width: 3rem;
     height: 3rem;
     padding: 0.25rem 1rem;
     font-size: 2rem;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0px 0px 5px black;
     margin: 0.25rem;
     display: flex;
@@ -89,7 +89,7 @@
 
 
 @media (max-height:900px) {
-    .ctrlBtn {
+    .GameControllers .ctrlBtn {
         width: 2.75rem;
         height: 2.65rem;
         padding: 0.25rem 1rem;
@@ -100,7 +100,7 @@
 }
 
 @media (max-height:800px) {
-    .ctrlBtn {
+    .GameControllers .ctrlBtn {
         width: 2.60rem;
         height: 2.25rem;
         padding: 0.25rem 1rem;
@@ -111,7 +111,7 @@
 }
 
 @media (max-height:700px) {
-    .ctrlBtn {
+    .GameControllers .ctrlBtn {
         width: 2.75rem;
         height: 2rem;
         padding: 0.25rem 1rem;

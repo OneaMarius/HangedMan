@@ -1,7 +1,7 @@
 .GameCard {
 
-    width: 40%;
-    min-width: 450px;
+    
+    width: 450px;
     height: calc(100% - 75px);
 
     position: fixed;
