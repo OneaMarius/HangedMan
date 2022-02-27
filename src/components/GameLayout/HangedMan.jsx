@@ -27,13 +27,13 @@ function HangedMan(props) {
       if (props.errors === 3) {
          setHand1(true);
       }
-      if (props.errors === 4) {
+      if (props.errors === 3) {
          setHand2(true);
       }
-      if (props.errors === 5) {
+      if (props.errors === 4) {
          setLeg1(true);
       }
-      if (props.errors === 6) {
+      if (props.errors === 4) {
          setLeg2(true);
       }
    }, [props.errors]);
@@ -48,25 +48,25 @@ function HangedMan(props) {
             <div className={mod.armC}></div>
             <div className={mod.armD}></div>
 
-            {body && <div className={`${mod.body} ${props.errors === 7 && mod.hang}`}>
-              {props.errors === 7 && <div><div className={mod.stain1}></div>
+            {body && <div className={`${mod.body} ${props.errors === 5 && mod.hang}`}>
+              {props.errors === 5 && <div><div className={mod.stain1}></div>
                <div className={mod.stain2}></div>
                <div className={mod.stain3}></div></div>} 
                </div>}
-            {hand1 && <div className={`${mod.handR } ${props.errors === 7 && mod.hangR}`}></div>}
-            {hand2 && <div className={`${mod.handL } ${props.errors === 7 && mod.hangL}`}></div>}
-            {leg1 && <div className={`${mod.legR } ${props.errors === 7 && mod.hangLleg}`}></div>}
-            {leg2 && <div className={`${mod.legL } ${props.errors === 7 && mod.hangRleg}`}></div>}
+            {hand1 && <div className={`${mod.handR } ${props.errors === 5 && mod.hangR}`}></div>}
+            {hand2 && <div className={`${mod.handL } ${props.errors === 5 && mod.hangL}`}></div>}
+            {leg1 && <div className={`${mod.legR } ${props.errors === 5 && mod.hangLleg}`}></div>}
+            {leg2 && <div className={`${mod.legL } ${props.errors === 5 && mod.hangRleg}`}></div>}
             {head && (
                <div
-                  className={`${mod.head } ${props.errors === 7 && mod.hangHead}`}>
-                     <div className={mod.eye1}>{props.errors === 7 ? 'x':'o'}</div>
-                     <div className={mod.eye2}>{props.errors === 7 ? 'x':'o'}</div>
-                     <div className={mod.mouth}>{props.errors === 7 ? '(':')'}</div>
+                  className={`${mod.head } ${props.errors === 5 && mod.hangHead}`}>
+                     <div className={mod.eye1}>{props.errors === 5 ? 'x':'o'}</div>
+                     <div className={mod.eye2}>{props.errors === 5 ? 'x':'o'}</div>
+                     <div className={mod.mouth}>{props.errors === 5 ? '(':')'}</div>
                   </div>
             )}
          </div>
-         {/* <div className={mod.lettersBar}>{props.usedLetters.map(item => <div className={mod.usedLetters} key={Math.random()}>{item}</div>)}</div> */}
+         <div className={mod.lettersBar}>REGULI: <word>[1]</word> Se pot face maxim 5 greseli. <word>[2]</word> Daca se apasa "New Word" jocul incepe si se scad 100p, iar jocul este considerat pierdut(Losses +1). <word>[3]</word> Daca jocul este castigat se adauga 100p*(5 - numarul cuvintelor gresite), Wins + 1 si Losses - 1.</div>
       </div>
    );
 }

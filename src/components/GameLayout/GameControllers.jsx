@@ -29,7 +29,7 @@ function GameControllers(props) {
    },[props.gameWon])
 
    return (
-      <div className={mod.GameControllers}>
+      <div className={`${mod.GameControllers} ${gameWon ? mod.GameControllersNewGame : ''}`}>
        {!gameWon && lettersArr.map((element) => {
 
             return (

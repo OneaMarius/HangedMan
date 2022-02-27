@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Button from "../Buttons/Button";
+// import Button from "../Buttons/Button";
 import mod from "./Game.module.css";
 
 function WordWindow(props) {
@@ -80,7 +80,7 @@ function WordWindow(props) {
       if (!correctLetter && props.newWord !== " " && !usedLetters.find(letter => letter === props.newWord)) {
          setErrorNr((prev) => +prev + 1);
          props.addError(errorNr + 1);
-         if (errorNr + 1 === 7) {
+         if (errorNr + 1 === 5) {
             setWORD(myWord.toUpperCase());
             setGameOver(true);
             props.lost();

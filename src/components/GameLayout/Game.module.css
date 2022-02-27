@@ -26,6 +26,10 @@
     overflow: auto;
 }
 
+.GameControllersNewGame {
+    align-items: center;
+}
+
 .btn {
     background-color: rebeccapurple;
 }

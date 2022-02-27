@@ -89,11 +89,11 @@ function GamePage() {
     }
    function win() {
       winSoundEffect.play();
-    setScore(prev => +prev + (7-errors)*100);
+    setScore(prev => +prev + (5-errors)*100);
     setWinGame(prev => +prev + 1);
     setLoseGame(prev => +prev - 1);
     setFinishGame(true);
-    UpdatePlayerScore(+score + (7-errors)*100, +winGame + 1,+loseGame - 1);
+    UpdatePlayerScore(+score + (5-errors)*100, +winGame + 1,+loseGame - 1);
     setUsedLetters([]);
     setCorrectLetters([]);
    }

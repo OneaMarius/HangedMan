@@ -63,12 +63,13 @@ function SignupForm() {
                   type="password"
                   id="password"
                   ref={passwordRef}
+                  minLength={4}
                   required
                />
             </div>
             <div className={mod.element}>
                <label htmlFor="name">Name:</label>
-               <input type="text" id="name" ref={nameRef} required />
+               <input type="text" id="name" ref={nameRef} required  minLength={4}/>
             </div>
             
             <div className={mod.element}>

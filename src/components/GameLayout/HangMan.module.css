@@ -117,6 +117,15 @@
     }
  }
 
+ @keyframes rulesBarAnim {
+   0% {
+       transform: translateX(500px);
+   }
+   100% {
+    transform: translateX(-100%);
+   }
+}
+
 
 .HangedMan {
    height: 50%;
@@ -125,6 +134,7 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   overflow: hidden;
 }
 
 .HMerrors {
@@ -143,15 +153,34 @@
 }
 
 .lettersBar {
-   width: 100%;
+   width: fit-content;
    height: 35px;
-   background-color: white;
+   background-color: transparent;
+   color: white;
+   text-shadow: 2px 2px 2px black;
+   font-size: 1.5rem;
    position: absolute;
    bottom: 0;
    left: 0;
    display: flex;
    align-items: center;
+   align-content: center;
    justify-content: space-evenly;
+   flex-wrap: nowrap;
+   white-space: nowrap;
+   
+   
+   animation-name: rulesBarAnim;
+   animation-duration: 40s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+   animation-fill-mode: forwards;
+}
+
+.lettersBar word {
+   color: rgb(255, 0, 34);
+   font-size: 1.5rem;
+   font-weight: bold;
 }
 
 .usedLetters {
